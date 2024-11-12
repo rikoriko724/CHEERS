@@ -9,7 +9,7 @@ from flask_cors import CORS
 import random
 import subprocess
 
-app = Flask(__name__, static_folder='../vuecheers/dist', template_folder='../vuecheers/dist')
+app = Flask(__name__, static_folder='../frontend/dist', template_folder='../frontend/dist')
 CORS(app)
 
 # 画像を保存するディレクトリ
