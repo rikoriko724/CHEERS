@@ -32,7 +32,7 @@ client_x509_cert_url = os.getenv("CLIENT_X509_CERT_URL")
 universe_domain = os.getenv("UNIVERSE_DOMAIN")
 
 # Firestoreクライアントの作成
-db = firestore.Client(project_id=os.environ['PROJECT_ID'])
+db = firestore.Client(project_id)
 
 # .envファイルの読み込み
 load_dotenv()
