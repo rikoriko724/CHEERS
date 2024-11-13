@@ -4,16 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  env: {
-      API_KEY: process.env.FIREBASE_API_KEY,
-      AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
-      DATABASE_URL: process.env.FIREBASE_DATABASE_URL,
-      PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
-      STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
-      MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
-      APP_ID: process.env.FIREBASE_APP_ID,
-      MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID,
-  }
+  apiKey: "AIzaSyCuLKI-Cr0Ar-bH4St4cUrHBHgaMDUj1Jc",
+  authDomain: "alc-promotion-dev.firebaseapp.com",
+  projectId: "alc-promotion-dev",
+  storageBucket: "alc-promotion-dev.firebasestorage.app",
+  messagingSenderId: "927091946306",
+  appId: "1:927091946306:web:72ee24cd562c65caab8edb",
+  measurementId: "G-L1JEDWG7T0"
 }
 
 // Firebase アプリの初期化
