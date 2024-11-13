@@ -25,7 +25,8 @@
 <script setup>
 import { useRouter } from 'vue-router'; 
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
+// import axios from 'axios';
+import { getLowestUser, runRandomScript } from '@/api';  // api.js から関数をインポート
 import { db } from '@/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 
@@ -45,7 +46,7 @@ const fetchLowestUser = async () => {
   error.value = null;
 
   try {
-    const response = await axios.get('http://localhost:5000/api/lowest_user');
+    const response = await getLowestUser();
     lowestUser.value = response.data.lowest_user;
     bloodAlcoholLevel.value = response.data.blood_alcohol_level;
   } catch (err) {
@@ -76,7 +77,7 @@ const runRandomScript = async () => {
 
 //音声再生
 const playAudio = () => {
-  const audioSrc = 'http://localhost:5000/static/audio/output.mp3'
+  const audioSrc = process.env.NODE_ENV === 'production' ? 'https://cheers-iwkk.onrender.com/static/audio/output.mp3' : 'http://localhost:5000/static/audio/output.mp3';
   const audio = new Audio(audioSrc);
   audio.play();
 

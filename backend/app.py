@@ -12,6 +12,7 @@ import subprocess
 app = Flask(__name__, static_folder='../frontend/dist', template_folder='../frontend/dist')
 CORS(app)
 
+
 # 画像を保存するディレクトリ
 IMAGE_DIR = 'backend/images'
 os.makedirs(IMAGE_DIR, exist_ok=True)
