@@ -10,7 +10,7 @@ import random
 import subprocess
 
 app = Flask(__name__, static_folder='../frontend/dist', template_folder='../frontend/dist')
-CORS(app)
+CORS(app, {r"/*": {"origins": ["https://cheers-eight.vercel.app", "http://127.0.0.1:5000"]}})
 
 
 # 画像を保存するディレクトリ
