@@ -152,7 +152,7 @@ const uploadPhoto = async (photoUrl) => {
     formData.append('image', base64Image);
 
     //APIエンドポイントにPOSTリクエストを送信
-    const response = await fetch('http://localhost:5000/upload', {
+    const response = await fetch('https://cheers-iwkk.onrender.com/upload', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
