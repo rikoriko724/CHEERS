@@ -12,6 +12,9 @@ import subprocess
 app = Flask(__name__, static_folder='../frontend/dist', template_folder='../frontend/dist')
 CORS(app)
 
+# .envファイルの読み込み
+load_dotenv()
+
 # API-KEYの設定
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
@@ -37,9 +40,6 @@ os.makedirs(IMAGE_DIR, exist_ok=True)
 
 # Firestoreクライアントの作成
 db = firestore.Client(project=os.environ['PROJECT_ID'])
-
-# .envファイルの読み込み
-load_dotenv()
 
 # 画像処理が可能なモデルを初期化
 gemini_pro = genai.GenerativeModel("gemini-1.5-flash")
