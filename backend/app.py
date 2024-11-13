@@ -15,7 +15,6 @@ CORS(app)
 # API-KEYの設定
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
-
 type =  os.getenv("TYPE")
 project_id = os.getenv("PROJECT_ID")
 private_key_id = os.getenv("PRIVATE_KEY_ID")
@@ -27,6 +26,9 @@ token_uri = os.getenv("TOKEN_URI")
 auth_provider_x509_cert_url = os.getenv("AUTH_PROVIDER_X509_CERT_URL")
 client_x509_cert_url = os.getenv("CLIENT_X509_CERT_URL")
 universe_domain = os.getenv("UNIVERSE_DOMAIN")
+
+print(project_id)
+print(private_key)
 
 
 # 画像を保存するディレクトリ
