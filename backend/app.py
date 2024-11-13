@@ -16,6 +16,9 @@ CORS(app)
 IMAGE_DIR = 'backend/images'
 os.makedirs(IMAGE_DIR, exist_ok=True)
 
+# .envファイルの読み込み
+load_dotenv()
+
 # API-KEYの設定
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
@@ -31,11 +34,12 @@ auth_provider_x509_cert_url = os.getenv("AUTH_PROVIDER_X509_CERT_URL")
 client_x509_cert_url = os.getenv("CLIENT_X509_CERT_URL")
 universe_domain = os.getenv("UNIVERSE_DOMAIN")
 
+print("PROJECT_ID:", project_id)
+
+
 # Firestoreクライアントの作成
 db = firestore.Client(project_id)
 
-# .envファイルの読み込み
-load_dotenv()
 
 # 画像処理が可能なモデルを初期化
 gemini_pro = genai.GenerativeModel("gemini-1.5-flash")
