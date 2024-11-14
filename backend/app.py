@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 from PIL import Image
 import google.generativeai as genai
 import base64
