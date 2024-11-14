@@ -12,9 +12,6 @@ import subprocess
 app = Flask(__name__, static_folder='../frontend/dist', template_folder='../frontend/dist')
 CORS(app)
 
-# .envファイルの読み込み
-load_dotenv()
-
 # API-KEYの設定
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
