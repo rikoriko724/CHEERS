@@ -3,7 +3,7 @@ from PIL import Image
 import google.generativeai as genai
 import base64
 from google.cloud import firestore
-from flask import Flask, render_template, send_from_directory, request, jsonify
+from flask import Flask, render_template, send_from_directory, request, jsonify, redirect
 from flask_cors import CORS
 import random
 import subprocess
@@ -48,8 +48,8 @@ scripts = [
 ]
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def redirect_to_frontend():
+    return redirect("https://cheers-frontend.onrender.com", code=302)
 
 @app.route("/<path:path>")
 def sendModuleFile(path):
