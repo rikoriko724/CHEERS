@@ -26,8 +26,8 @@ auth_provider_x509_cert_url = os.getenv("AUTH_PROVIDER_X509_CERT_URL")
 client_x509_cert_url = os.getenv("CLIENT_X509_CERT_URL")
 universe_domain = os.getenv("UNIVERSE_DOMAIN")
 
-print(project_id)
-print(private_key)
+print("projectId:", project_id)
+print("privateKey:", private_key)
 
 
 # 画像を保存するディレクトリ
