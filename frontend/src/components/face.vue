@@ -155,7 +155,7 @@ const formattedTime = computed(() => {
 // WebAPIを呼び出す関数
 const callWebAPI = async (time) => {
   try {
-    const response = await axios.post('https://your-api-endpoint.com', { time });
+    const response = await axios.post('https://cheers-backend-335f.onrender.com', { time });
     console.log('API response:', response.data);
   } catch (error) {
     console.error('Error calling API:', error);

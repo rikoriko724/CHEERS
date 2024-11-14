@@ -45,7 +45,7 @@ const fetchLowestUser = async () => {
   error.value = null;
 
   try {
-    const response = await axios.get('http://localhost:5000/api/lowest_user');
+    const response = await axios.get('https://cheers-backend-335f.onrender.com/api/lowest_user');
     lowestUser.value = response.data.lowest_user;
     bloodAlcoholLevel.value = response.data.blood_alcohol_level;
   } catch (err) {
@@ -58,7 +58,7 @@ const fetchLowestUser = async () => {
 
 const runRandomScript = async () => {
   try {
-    const response = await axios.get('http://localhost:5000/api/run-random-script');
+    const response = await axios.get('https://cheers-backend-335f.onrender.com/api/run-random-script');
     if (response.data.status === 'success') {
       scriptOutput.value = `スクリプト: ${response.data.script}\n出力:\n${response.data.output}`;
       console.log('スクリプトを実行できました');
@@ -76,7 +76,7 @@ const runRandomScript = async () => {
 
 //音声再生
 const playAudio = () => {
-  const audioSrc = 'http://localhost:5000/static/audio/output.mp3'
+  const audioSrc = 'https://cheers-backend-335f.onrender.com/static/audio/output.mp3'
   const audio = new Audio(audioSrc);
   audio.play();
 
