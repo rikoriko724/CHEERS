@@ -4,20 +4,20 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCuLKI-Cr0Ar-bH4St4cUrHBHgaMDUj1Jc",
-  authDomain: "alc-promotion-dev.firebaseapp.com",
-  projectId: "alc-promotion-dev",
-  storageBucket: "alc-promotion-dev.firebasestorage.app",
-  messagingSenderId: "927091946306",
-  appId: "1:927091946306:web:72ee24cd562c65caab8edb",
-  measurementId: "G-L1JEDWG7T0"
-}
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+};
 
 // Firebase アプリの初期化
 const app = initializeApp(firebaseConfig);
 console.log("Firebase App Initialized:", app.name); // 初期化チェック
 
-// Firestore, Analytics, Auth の初期化
+// Firestore, Auth の初期化
 const db = getFirestore(app);
 const auth = getAuth(app);
 

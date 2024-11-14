@@ -1,10 +1,10 @@
 {
-  "name": "vuecheers",
+  "name": "frontend",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview",
+    "start": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "dependencies": {
@@ -33,5 +33,7 @@
     "vite": "^5.3.3",
     "vite-plugin-vuetify": "^2.0.3",
     "vue-router": "^4.4.5"
-  }
+  },
+  "main": "index.js",
+  "license": "MIT"
 }
