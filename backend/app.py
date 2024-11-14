@@ -36,7 +36,7 @@ IMAGE_DIR = 'backend/images'
 os.makedirs(IMAGE_DIR, exist_ok=True)
 
 # Firestoreクライアントの作成
-db = firestore.Client(project=os.environ['PROJECT_ID'])
+db = firestore.Client(project_id)
 
 # 画像処理が可能なモデルを初期化
 gemini_pro = genai.GenerativeModel("gemini-1.5-flash")
