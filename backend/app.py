@@ -3,13 +3,17 @@ from PIL import Image
 import google.generativeai as genai
 import base64
 from google.cloud import firestore
-from flask import Flask, render_template, send_from_directory, request, jsonify, redirect
+from flask import Flask, render_template, send_from_directory, request, jsonify
 from flask_cors import CORS
 import random
 import subprocess
 
-app = Flask(__name__, static_folder='../frontend/dist', template_folder='../frontend/dist')
-CORS(app)
+app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+# 画像を保存するディレクトリ
+IMAGE_DIR = 'backend/images'
+os.makedirs(IMAGE_DIR, exist_ok=True)
 
 # API-KEYの設定
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
@@ -17,7 +21,7 @@ genai.configure(api_key=GOOGLE_API_KEY)
 type =  os.getenv("TYPE")
 project_id = os.getenv("PROJECT_ID")
 private_key_id = os.getenv("PRIVATE_KEY_ID")
-private_key = os.getenv("PRIVATE_KEY")
+private_key = os.getenv("PRIVATE_KEY").replace("\\n", "\n")
 client_email = os.getenv("CLIENT_EMAIL")
 client_id = os.getenv("CLIENT_ID")
 auth_uri = os.getenv("AUTH_URI")
@@ -26,16 +30,15 @@ auth_provider_x509_cert_url = os.getenv("AUTH_PROVIDER_X509_CERT_URL")
 client_x509_cert_url = os.getenv("CLIENT_X509_CERT_URL")
 universe_domain = os.getenv("UNIVERSE_DOMAIN")
 
-print("projectId:", project_id)
-print("privateKey:", private_key)
-
-
-# 画像を保存するディレクトリ
-IMAGE_DIR = 'backend/images'
-os.makedirs(IMAGE_DIR, exist_ok=True)
+print("projectId", project_id)
+print("privateKey",private_key)
 
 # Firestoreクライアントの作成
-db = firestore.Client(project_id)
+db = firestore.Client(project=os.environ['PROJECT_ID'])
+
+# API-KEYの設定
+GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+genai.configure(api_key=GOOGLE_API_KEY)
 
 # 画像処理が可能なモデルを初期化
 gemini_pro = genai.GenerativeModel("gemini-1.5-flash")
@@ -48,8 +51,8 @@ scripts = [
 ]
 
 @app.route('/')
-def redirect_to_frontend():
-    return redirect("https://cheers-frontend.onrender.com", code=302)
+def index():
+    return render_template('index.html')
 
 @app.route("/<path:path>")
 def sendModuleFile(path):
